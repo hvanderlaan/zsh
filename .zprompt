@@ -1,0 +1,39 @@
+# load prompt functions
+setopt promptsubst
+unsetopt transient_rprompt # leave the pwd 
+
+# get the colors
+source ~/.zcolors
+
+# set the prompt
+set_prompt() {
+    mypath="$C_OFF$C_L_GREEN%~"
+    myjobs=()
+    for a (${(k)jobstates})
+    {j=$jobstates[$a];i="${${(@s,:,)j}[2]}"
+    myjobs+=($a${i//[^+-]/})}
+    myjobs=${(j:,:)myjobs}
+    ((MAXMID=$COLUMNS / 2)) # truncate to this value
+    RPS1="$RPSL$C_L_GREEN%$MAXMID<...<$mypath$RPSR"
+   rehash
+}
+
+# print optional number of bg jobs (when 0 show nothing)
+# when the path is too long only the last section is shown
+# root is simple and all red
+
+# reset the colors when printing the rside prompt always
+if [ "$USER" = "root" ]; then
+    PS1=$'$C_BLUE%m$C_OFF.$C_RED%B%n%b $C_RED%#% $C_OFF '
+else
+    PS1=$'$C_L_BLUE%(1j.[$myjobs]% $C_OFF .$C_OFF)$C_BLUE%m$C_OFF.%B%n%b $C_OFF$C_L_GREEN%#$C_OFF '
+fi
+RPSL=$'$C_OFF'
+RPSR=$'$C_OFF$C_L_RED%(0?.$C_L_GREEN. (%?%))$C_OFF'
+RPS2='%^'
+
+precmd () {
+   set_prompt
+   print -Pn "\e]0;%n@%M: %~\a"
+}
+
