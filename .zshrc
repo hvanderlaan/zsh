@@ -88,35 +88,6 @@ extract() {
   fi
 }
 
-wiki() {
-  if [ ! -z ${1} ]; then
-    dig +short txt $*.wp.dg.cx
-  else
-    echo "Usage: ${0} \"<search string>\""
-  fi
-}
-
-## Git functions
-ga() {
-  if [ -z ${1} ]; then
-    echo "[-] Usage: ${0} <files to add>"
-  else
-    git add "${@}"
-  fi
-}
-
-gc() {
-  if [ -z ${1} ]; then
-    echo "[-] Usage: ${0} <Commit blam>"
-  else
-    git commit -m "${@}"
-  fi
-}
-
-gp() {
-  git push -u origin master
-}
-
 pwgen() {
     if [ -z ${1} ]; then
         openssl rand -base64 9
