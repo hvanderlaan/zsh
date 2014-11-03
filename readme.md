@@ -18,4 +18,3 @@ Features
 - Themeable prompts, including the ability to put prompt information on the right side of the screen and have it auto-hide when typing a long command
 - Loadable modules, providing among other things: full TCP and Unix domain socket controls, an FTP client, and extended math functions
 - Fully customizable
-
