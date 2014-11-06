@@ -43,4 +43,3 @@ httptest() {
         (echo "GET / HTTP/1.1\nHOST: ${2}\n\n"; sleep 2) | telnet ${1} 80
     fi
 }
-
