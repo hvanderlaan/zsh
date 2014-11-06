@@ -79,7 +79,7 @@ set_prompt() {
 
 # print optional number of bg jobs (when 0 show nothing)
 # when the path is too long only the last section is shown
-# root is simple and all red
+# root is simple and all red.
 
 # reset the colors when printing the rside prompt always
 if [ "$USER" = "root" ]; then
