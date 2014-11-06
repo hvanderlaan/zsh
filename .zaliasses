@@ -1,0 +1,23 @@
+## Z shell alias file
+
+## Global aliasses
+alias -g L="| less"
+alias -g G="| grep"
+alias -g C="| wc -l"
+alias -g T="| tail"
+alias -g H="| head"
+alias -g DN="/dev/null"
+alias -g ENC="| openssl enc -aes256"
+alias -g DEC="| openssl enc -aes256 -d"
+alias -g RT="> /tmp/zsh_temp"
+
+## Regular aliasses
+alias ls="ls --color=yes"
+alias l="ls -F"
+alias ll="ls -alF"
+alias lsd='ls -al | grep "^d"'
+alias grep="egrep --color=auto"
+alias ..="cd .."
+alias http="w3m"
+alias vi="vim -p"
+alias excuse='telnet towel.blinkenlights.nl 666'
