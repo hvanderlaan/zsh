@@ -90,7 +90,11 @@ fi
 
 # show ssh connections with yellow
 if [ $(env | grep SSH_CONNECTION &> /dev/null; echo ${?}) -eq 0 ]; then
-    PS1=$'$C_BLUE%m$C_OFF.$C_YELLOW%B%n%b $C_L_GREEN%#% $C_OFF '
+    if [ "$USER" = "root" ]; then
+        PS1=$'$C_L_BLUE%(1j.[$myjobs]% $C_OFF .$C_OFF)$C_BLUE%m$C_YELLOW.%B%n%b $C_OFF$C_RED%#$C_OFF '
+    else
+        PS1=$'$C_L_BLUE%(1j.[$myjobs]% $C_OFF .$C_OFF)$C_BLUE%m$C_YELLOW.%B%n%b $C_OFF$C_GREEN%#$C_OFF '
+    fi
 fi
 
 RPSL=$'$C_OFF'
